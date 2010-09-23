@@ -1,12 +1,13 @@
-(set-default-font "Inconsolata-14")
+(set-default-font "Inconsolata-12")
 (require 'color-theme)
+(color-theme-initialize)
 (color-theme-hober)
 
 ; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 ; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-;; Use 4 spaces for identeatio, always
+;; Use 4 spaces for indentation, always
 (setq c-basic-offset 4)
 (setq tab-width 4)
 (setq indent-tabs-mode nil)
