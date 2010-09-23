@@ -1,0 +1,61 @@
+(set-default-font "Inconsolata-14")
+(require 'color-theme)
+(color-theme-hober)
+
+; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+;; Use 4 spaces for identeatio, always
+(setq c-basic-offset 4)
+(setq tab-width 4)
+(setq indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
+
+; Steve Yegge tips. Using C-w for delete word, and C-x C-k for kill region.
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+
+; Indent automatically on newlines
+(global-set-key "\r" 'newline-and-indent)
+
+;;;; Hippie-expand:
+(setq hippie-expand-try-functions-list ; functions to use for expansion
+         '(try-complete-lisp-symbol-partially
+           try-expand-dabbrev
+           try-expand-all-abbrevs
+           try-complete-file-name-partially
+           try-complete-file-name
+           try-expand-list
+           try-expand-line
+           try-expand-dabbrev-all-buffers
+           try-expand-dabbrev-from-kill
+           try-complete-lisp-symbol
+           ))
+(global-set-key [(control return)] 'hippie-expand) ; expand whatever
+
+; like j in VI
+(global-set-key "\C-xj" '(lambda () (interactive) (join-line -1)))
+(global-set-key "\C-x\C-j" '(lambda () (interactive) (join-line -1)))
+
+; * in VIM
+;; I-search with initial contents
+(defvar isearch-initial-string nil)
+(defun isearch-set-initial-string ()
+  (remove-hook 'isearch-mode-hook 'isearch-set-initial-string)
+  (setq isearch-string isearch-initial-string)
+  (isearch-search-and-update))
+(defun isearch-forward-at-point (&optional regexp-p no-recursive-edit)
+  "Interactive search forward for the symbol at point."
+  (interactive "P\np")
+  (if regexp-p (isearch-forward regexp-p no-recursive-edit)
+    (let* ((end (progn (skip-syntax-forward "w_") (point)))
+           (begin (progn (skip-syntax-backward "w_") (point))))
+      (if (eq begin end)
+          (isearch-forward regexp-p no-recursive-edit)
+        (setq isearch-initial-string (buffer-substring begin end))
+        (add-hook 'isearch-mode-hook 'isearch-set-initial-string)
+        (isearch-forward regexp-p no-recursive-edit)))))
+(global-set-key [?\C-']  'isearch-forward-at-point)    ;; works
+(global-set-key "\C-@" 'isearch-forward-at-point) ;; OS X
