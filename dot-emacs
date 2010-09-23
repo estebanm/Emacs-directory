@@ -26,22 +26,25 @@
          '(try-complete-lisp-symbol-partially
            try-expand-dabbrev
            try-expand-all-abbrevs
-           try-complete-file-name-partially
-           try-complete-file-name
-           try-expand-list
-           try-expand-line
            try-expand-dabbrev-all-buffers
            try-expand-dabbrev-from-kill
            try-complete-lisp-symbol
            ))
 (global-set-key [(control return)] 'hippie-expand) ; expand whatever
 
-; like j in VI
+; Complete lines like VIM
+(global-set-key "\C-x\C-o" (make-hippie-expand-function
+                               '(try-expand-line) t))
+; Complete file names like VIM
+(global-set-key "\C-x\C-t" (make-hippie-expand-function
+                               '(try-complete-file-name
+                                 try-complete-file-name-partially) t))
+
+; Join lines like in VIM
 (global-set-key "\C-xj" '(lambda () (interactive) (join-line -1)))
 (global-set-key "\C-x\C-j" '(lambda () (interactive) (join-line -1)))
 
-; * in VIM
-;; I-search with initial contents
+; Search for the word under the cursor (like * in VIM)
 (defvar isearch-initial-string nil)
 (defun isearch-set-initial-string ()
   (remove-hook 'isearch-mode-hook 'isearch-set-initial-string)
@@ -58,5 +61,4 @@
         (setq isearch-initial-string (buffer-substring begin end))
         (add-hook 'isearch-mode-hook 'isearch-set-initial-string)
         (isearch-forward regexp-p no-recursive-edit)))))
-(global-set-key [?\C-']  'isearch-forward-at-point)    ;; works
-(global-set-key "\C-@" 'isearch-forward-at-point) ;; OS X
+(global-set-key [?\C-8]  'isearch-forward-at-point)
