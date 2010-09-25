@@ -1,27 +1,38 @@
-(set-default-font "Inconsolata-12")
-(require 'color-theme)
-(color-theme-initialize)
-(color-theme-hober)
-
+;; Do this first to avoid annoying flickering
 ; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 ; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
-;; Use 4 spaces for indentation, always
+;; Font and color theme
+(set-default-font "Inconsolata-12")
+(require 'color-theme)
+(if (fboundp 'color-theme-initialize) (color-theme-initialize) nil)
+(color-theme-hober)
+
+;; Indentation and such
 (setq c-basic-offset 4)
 (setq tab-width 4)
 (setq indent-tabs-mode nil)
 (setq-default indent-tabs-mode nil)
+; Indent new lines automatically
+(global-set-key "\r" 'newline-and-indent)
 
-; Steve Yegge tips. Using C-w for delete word, and C-x C-k for kill region.
+;; Put automatic crap in another file
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
+
+;; Common shortcuts
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
 
-; Indent automatically on newlines
-(global-set-key "\r" 'newline-and-indent)
+;; Ido mode for the mini-buffer
+; See http://www.emacswiki.org/emacs-en/InteractivelyDoThings
+(require 'ido)
+(ido-mode t)
 
-;;;; Hippie-expand:
+;; Expansion
+; Crazy expansion w/ C-RET
 (setq hippie-expand-try-functions-list ; functions to use for expansion
          '(try-complete-lisp-symbol-partially
            try-expand-dabbrev
@@ -31,7 +42,6 @@
            try-complete-lisp-symbol
            ))
 (global-set-key [(control return)] 'hippie-expand) ; expand whatever
-
 ; Complete lines like VIM
 (global-set-key "\C-x\C-o" (make-hippie-expand-function
                                '(try-expand-line) t))
@@ -62,3 +72,6 @@
         (add-hook 'isearch-mode-hook 'isearch-set-initial-string)
         (isearch-forward regexp-p no-recursive-edit)))))
 (global-set-key [?\C-8]  'isearch-forward-at-point)
+
+;; Please don't make me type the whole word 'yes' or 'no'
+(defalias 'yes-or-no-p 'y-or-n-p)
