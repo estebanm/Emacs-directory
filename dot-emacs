@@ -22,9 +22,14 @@
 (load custom-file 'noerror)
 
 ;; Common shortcuts
-(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-\M-h" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
+
+;; Whitespace options
+(global-whitespace-mode) 
+(setq whitespace-line-column 80) 
+(setq whitespace-style '(tabs lines-tail trailing empty indentation::space))
 
 ;; Ido mode for the mini-buffer
 ; See http://www.emacswiki.org/emacs-en/InteractivelyDoThings
