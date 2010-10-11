@@ -28,8 +28,8 @@
 (global-set-key "\C-c\C-k" 'kill-region)
 
 ;; Whitespace options
-(global-whitespace-mode) 
-(setq whitespace-line-column 80) 
+(global-whitespace-mode)
+(setq whitespace-line-column 80)
 (setq whitespace-style '(tabs lines-tail trailing empty indentation::space))
 
 ;; Ido mode for the mini-buffer
@@ -38,16 +38,6 @@
 (ido-mode t)
 
 ;; Expansion
-; Crazy expansion w/ C-RET
-(setq hippie-expand-try-functions-list ; functions to use for expansion
-         '(try-complete-lisp-symbol-partially
-           try-expand-dabbrev
-           try-expand-all-abbrevs
-           try-expand-dabbrev-all-buffers
-           try-expand-dabbrev-from-kill
-           try-complete-lisp-symbol
-           ))
-(global-set-key [(control return)] 'hippie-expand) ; expand whatever
 ; Complete lines like VIM
 (global-set-key "\C-x\C-o" (make-hippie-expand-function
                                '(try-expand-line) t))
