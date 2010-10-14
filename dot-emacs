@@ -30,7 +30,7 @@
 ;; Whitespace options
 (global-whitespace-mode)
 (setq whitespace-line-column 80)
-(setq whitespace-style '(tabs lines-tail trailing empty indentation::space))
+(setq whitespace-style '(tabs lines-tail trailing indentation::space))
 
 ;; Ido mode for the mini-buffer
 ; See http://www.emacswiki.org/emacs-en/InteractivelyDoThings
