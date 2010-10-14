@@ -37,6 +37,22 @@
 (require 'ido)
 (ido-mode t)
 
+;; Markdown mode for .text files
+(autoload 'markdown-mode "markdown-mode.el"
+   "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+   (cons '("\\.text" . markdown-mode) auto-mode-alist))
+
+;; nXML configuration
+(require `nxml-mode)
+(setq auto-mode-alist
+      (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
+            auto-mode-alist))
+(add-hook 'nxml-mode-hook '(lambda nil
+                             (local-set-key [M-end] 'nxml-finish-element)))
+; Autoclose tag on </
+(setq nxml-slash-auto-complete-flag t)
+
 ;; Expansion
 ; Complete lines like VIM
 (global-set-key "\C-x\C-o" (make-hippie-expand-function
