@@ -26,6 +26,9 @@
 (global-set-key "\C-\M-h" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
+(global-set-key "\C-xj" '(lambda () (interactive) (join-line -1)))
+(global-set-key "\C-x\C-j" '(lambda () (interactive) (join-line -1)))
+(global-set-key "\C-\M-t" 'transpose-lines)
 
 ;; Whitespace options
 (global-whitespace-mode)
@@ -61,10 +64,6 @@
 (global-set-key "\C-x\C-t" (make-hippie-expand-function
                                '(try-complete-file-name
                                  try-complete-file-name-partially) t))
-
-; Join lines like in VIM
-(global-set-key "\C-xj" '(lambda () (interactive) (join-line -1)))
-(global-set-key "\C-x\C-j" '(lambda () (interactive) (join-line -1)))
 
 ; Search for the word under the cursor (like * in VIM)
 (defvar isearch-initial-string nil)
