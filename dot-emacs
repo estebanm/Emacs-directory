@@ -41,7 +41,7 @@
 (autoload 'markdown-mode "markdown-mode.el"
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
-   (cons '("\\.text" . markdown-mode) auto-mode-alist))
+   (cons '("\\.\\(text\\|markdown\\)" . markdown-mode) auto-mode-alist))
 
 ;; nXML configuration
 (require `nxml-mode)
