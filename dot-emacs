@@ -1,7 +1,7 @@
 ;; Do this first to avoid annoying flickering
 ; (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ;; Font and color theme
 (set-default-font "Inconsolata-12")
@@ -17,9 +17,10 @@
 ; Indent new lines automatically
 (global-set-key "\r" 'newline-and-indent)
 
-;; Put automatic crap in another file
+;; Automatic crap handling
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
+(setq make-backup-files nil)
 
 ;; Common shortcuts
 (global-set-key "\C-h" 'backward-delete-char)
