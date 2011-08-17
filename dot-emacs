@@ -30,6 +30,10 @@
 (global-set-key "\C-xj" '(lambda () (interactive) (join-line -1)))
 (global-set-key "\C-x\C-j" '(lambda () (interactive) (join-line -1)))
 (global-set-key "\C-\M-t" 'transpose-lines)
+; Add C-u as in bash
+(fset 'kill-until-start-of-line
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\260" 0 "%d")) arg)))
+(global-set-key "\C-u" 'kill-until-start-of-line)
 
 ;; Whitespace options
 (global-whitespace-mode)
@@ -46,16 +50,6 @@
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
    (cons '("\\.\\(text\\|markdown\\)" . markdown-mode) auto-mode-alist))
-
-;; nXML configuration
-(require `nxml-mode)
-(setq auto-mode-alist
-      (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
-            auto-mode-alist))
-(add-hook 'nxml-mode-hook '(lambda nil
-                             (local-set-key [M-end] 'nxml-finish-element)))
-; Autoclose tag on </
-(setq nxml-slash-auto-complete-flag t)
 
 ;; Expansion
 ; Complete lines like VIM
@@ -89,6 +83,16 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 
+;; nXML configuration
+(require `nxml-mode)
+(setq auto-mode-alist
+      (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
+            auto-mode-alist))
+(add-hook 'nxml-mode-hook '(lambda nil
+                             (local-set-key [M-end] 'nxml-finish-element)))
+; Autoclose tag on </
+(setq nxml-slash-auto-complete-flag t)
+
 ;; Scala
 (add-to-list 'load-path "~/.emacs.d/scala")
 (require 'scala-mode-auto)
@@ -105,3 +109,8 @@
 (add-to-list 'load-path "~/.emacs.d/rainbow/")
 (require 'rainbow-mode)
 (rainbow-mode)
+
+;;; cperl-mode is preferred to perl-mode
+;;; "Brevity is the soul of wit" <foo at acm.org>
+(defalias 'perl-mode 'cperl-mode)
+(setq cperl-indent-level 4)
