@@ -100,10 +100,10 @@
 
 ;; Scala
 (add-to-list 'load-path "~/.emacs.d/scala")
-(require 'scala-mode-auto)
+(ignore-errors (require 'scala-mode-auto))
 ; Ensime
 (add-to-list 'load-path "~/lib/scala/ensime_2.8.1-0.4.4/elisp/")
-(require 'ensime)
+(ignore-errors (require 'ensime))
 ; This step causes the ensime-mode to be started whenever
 ; scala-mode is started for a buffer. You may have to customize this step
 ; if you're not using the standard scala mode.
@@ -112,8 +112,9 @@
 ; Open .scala file. M-x ensime (once per project)
 
 (add-to-list 'load-path "~/.emacs.d/rainbow/")
-(require 'rainbow-mode)
-(rainbow-mode)
+(ignore-errors
+  (require 'rainbow-mode)
+  (rainbow-mode))
 
 ;;; cperl-mode is preferred to perl-mode
 ;;; "Brevity is the soul of wit" <foo at acm.org>
