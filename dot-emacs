@@ -11,7 +11,7 @@
 
 ;; Load own functions, bound to shortcuts below
 (add-to-list 'load-path "~/src/Emacs-directory/")
-(load-file "editing-functions.el")
+(load-library "editing-functions")
 
 ;; Indentation and such
 (setq c-basic-offset 4)
