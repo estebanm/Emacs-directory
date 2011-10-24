@@ -9,9 +9,20 @@
 (if (fboundp 'color-theme-initialize) (color-theme-initialize) nil)
 (color-theme-hober)
 
-;; Load own functions, bound to shortcuts below
+;; Random functions
+; Load own functions, bound to shortcuts below
 (add-to-list 'load-path "~/src/Emacs-directory/")
 (load-library "editing-functions")
+; Functions from Emacswiki et al.
+(add-to-list 'load-path "~/.emacs.d/extra/")
+(ignore-errors
+  (require 'iy-go-to-char)
+  ; Use iy-go-to-char to gain some VIM POWA
+  (global-set-key (kbd "C-M-f") 'iy-go-to-char)
+  (global-set-key (kbd "C-M-S-f") 'iy-go-to-char-backward))
+(ignore-errors
+  (require 'volatile-highlights)
+  (volatile-highlights-mode t))
 
 ;; Indentation and such
 (setq c-basic-offset 4)
@@ -112,6 +123,8 @@
 ; MINI HOWTO:
 ; Open .scala file. M-x ensime (once per project)
 
+;; Minor modes
+; Rainbow
 (add-to-list 'load-path "~/.emacs.d/rainbow/")
 (ignore-errors
   (require 'rainbow-mode)
