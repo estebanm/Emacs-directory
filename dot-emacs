@@ -121,3 +121,10 @@
 ;;; "Brevity is the soul of wit" <foo at acm.org>
 (defalias 'perl-mode 'cperl-mode)
 (setq cperl-indent-level 4)
+
+;; Javascript
+(add-to-list 'load-path "~/.emacs.d/js2-mode")
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq js2-consistent-level-indent-inner-bracket-p t)
+(setq js2-pretty-multiline-decl-indentation-p t)
