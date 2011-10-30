@@ -3,39 +3,68 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
+;; Library load paths
+(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+(add-to-list 'load-path "~/src/Emacs-directory/")
+(add-to-list 'load-path "~/.emacs.d/extra/")
+(add-to-list 'load-path "~/.emacs.d/rainbow/")
+(add-to-list 'load-path "~/.emacs.d/scala")
+(add-to-list 'load-path "~/lib/scala/ensime_2.8.1-0.4.4/elisp/")
+(add-to-list 'load-path "~/.emacs.d/js2-mode")
+(add-to-list 'load-path "~/.emacs.d/less-css-mode")
+; Load own functions, bound to shortcuts below
+(load-library "editing-functions")
+
+
 ;; Font and color theme
 (set-default-font "Inconsolata-12")
 (require 'color-theme)
-(if (fboundp 'color-theme-initialize) (color-theme-initialize) nil)
-(color-theme-hober)
-
-;; Random functions
-; Load own functions, bound to shortcuts below
-(add-to-list 'load-path "~/src/Emacs-directory/")
-(load-library "editing-functions")
-; Functions from Emacswiki et al.
-(add-to-list 'load-path "~/.emacs.d/extra/")
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-hober)))
+; If exists, load this one instead
 (ignore-errors
-  (require 'iy-go-to-char)
-  ; Use iy-go-to-char to gain some VIM POWA
-  (global-set-key (kbd "C-M-f") 'iy-go-to-char)
-  (global-set-key (kbd "C-M-S-f") 'iy-go-to-char-backward))
-(ignore-errors
-  (require 'volatile-highlights)
-  (volatile-highlights-mode t))
+  (require 'color-theme-solarized)
+  ;(color-theme-solarized-dark)
+  )
 
-;; Indentation and such
+;; Indentation, whitespace...
 (setq c-basic-offset 4)
 (setq tab-width 4)
 (setq indent-tabs-mode nil)
 (setq-default indent-tabs-mode nil)
 ; Indent new lines automatically
 (global-set-key "\r" 'newline-and-indent)
+; Whitespace
+(global-whitespace-mode)
+(setq whitespace-line-column 80)
+(setq whitespace-style '(tabs lines-tail trailing indentation::space))
 
-;; Automatic crap handling
+;; Other options
+; Ido mode for the mini-buffer, see
+; http://www.emacswiki.org/emacs-en/InteractivelyDoThings
+(require 'ido)
+(ido-mode t)
+; Don't make me type the whole word 'yes' or 'no'
+(defalias 'yes-or-no-p 'y-or-n-p)
+; Automatic crap handling
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 (setq make-backup-files nil)
+
+;; Minor modes
+; Show-paren mode
+(show-paren-mode 1)
+; Rainbow
+(ignore-errors
+  (require 'rainbow-mode)
+  (rainbow-mode))
+; Volatile highlights
+(ignore-errors
+  (require 'volatile-highlights)
+  (volatile-highlights-mode t))
+
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
@@ -48,25 +77,22 @@
 (global-set-key "\C-\M-t" 'transpose-lines)
 ; Add C-u as in bash
 (global-set-key "\C-u" 'kill-until-start-of-line)
+; Add C-c c t
+(global-set-key "\C-cct" 'clone-current-test)
 ; Add C-M-d, w to removing the whitespace following the cursor
 (global-unset-key "\C-\M-d")
 (global-set-key "\C-\M-dw" 'kill-following-whitespace)
-
-;; Whitespace options
-(global-whitespace-mode)
-(setq whitespace-line-column 80)
-(setq whitespace-style '(tabs lines-tail trailing indentation::space))
-
-;; Ido mode for the mini-buffer
-; See http://www.emacswiki.org/emacs-en/InteractivelyDoThings
-(require 'ido)
-(ido-mode t)
-
-;; Markdown mode for .text files
-(autoload 'markdown-mode "markdown-mode.el"
-   "Major mode for editing Markdown files" t)
-(setq auto-mode-alist
-   (cons '("\\.\\(text\\|markdown\\)" . markdown-mode) auto-mode-alist))
+; From Steve Yegge: make it super-comfortable to call M-x
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+; Search for the word under the cursor (like * in VIM)
+(global-set-key [?\C-8]  'isearch-forward-at-point)
+; Use iy-go-to-char to gain some VIM POWA
+(ignore-errors
+  (require 'iy-go-to-char)
+  (global-set-key (kbd "C-M-f") 'iy-go-to-char)
+  (global-set-key (kbd "C-M-S-f") 'iy-go-to-char-backward))
+(global-set-key (kbd "C-%")  'goto-match-paren)
 
 ;; Expansion
 ; Complete lines like VIM
@@ -77,28 +103,15 @@
                                '(try-complete-file-name
                                  try-complete-file-name-partially) t))
 
-; Search for the word under the cursor (like * in VIM)
-(defvar isearch-initial-string nil)
-(defun isearch-set-initial-string ()
-  (remove-hook 'isearch-mode-hook 'isearch-set-initial-string)
-  (setq isearch-string isearch-initial-string)
-  (isearch-search-and-update))
-(defun isearch-forward-at-point (&optional regexp-p no-recursive-edit)
-  "Interactive search forward for the symbol at point."
-  (interactive "P\np")
-  (if regexp-p (isearch-forward regexp-p no-recursive-edit)
-    (let* ((end (progn (skip-syntax-forward "w_") (point)))
-           (begin (progn (skip-syntax-backward "w_") (point))))
-      (if (eq begin end)
-          (isearch-forward regexp-p no-recursive-edit)
-        (setq isearch-initial-string (buffer-substring begin end))
-        (add-hook 'isearch-mode-hook 'isearch-set-initial-string)
-        (isearch-forward regexp-p no-recursive-edit)))))
-(global-set-key [?\C-8]  'isearch-forward-at-point)
 
-;; Please don't make me type the whole word 'yes' or 'no'
-(defalias 'yes-or-no-p 'y-or-n-p)
 
+;;; Major mode shenanigans ---------------------------------------------
+
+;; Markdown mode for .text files
+(autoload 'markdown-mode "markdown-mode.el"
+   "Major mode for editing Markdown files" t)
+(setq auto-mode-alist
+   (cons '("\\.\\(text\\|markdown\\)" . markdown-mode) auto-mode-alist))
 
 ;; nXML configuration
 (require `nxml-mode)
@@ -111,10 +124,8 @@
 (setq nxml-slash-auto-complete-flag t)
 
 ;; Scala
-(add-to-list 'load-path "~/.emacs.d/scala")
 (ignore-errors (require 'scala-mode-auto))
 ; Ensime
-(add-to-list 'load-path "~/lib/scala/ensime_2.8.1-0.4.4/elisp/")
 (ignore-errors (require 'ensime))
 ; This step causes the ensime-mode to be started whenever
 ; scala-mode is started for a buffer. You may have to customize this step
@@ -123,21 +134,18 @@
 ; MINI HOWTO:
 ; Open .scala file. M-x ensime (once per project)
 
-;; Minor modes
-; Rainbow
-(add-to-list 'load-path "~/.emacs.d/rainbow/")
-(ignore-errors
-  (require 'rainbow-mode)
-  (rainbow-mode))
-
 ;;; cperl-mode is preferred to perl-mode
 ;;; "Brevity is the soul of wit" <foo at acm.org>
 (defalias 'perl-mode 'cperl-mode)
 (setq cperl-indent-level 4)
 
 ;; Javascript
-(add-to-list 'load-path "~/.emacs.d/js2-mode")
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq js2-consistent-level-indent-inner-bracket-p t)
 (setq js2-pretty-multiline-decl-indentation-p t)
+(put 'narrow-to-region 'disabled nil)
+
+;; LESS CSS
+(ignore-errors
+  (require 'less-css-mode))
