@@ -64,7 +64,10 @@
 (ignore-errors
   (require 'volatile-highlights)
   (volatile-highlights-mode t))
-
+; Flyspell
+(dolist (hook '(text-mode-hook))
+    (add-hook hook (lambda () (flyspell-mode 1)))
+    (add-hook hook 'turn-on-auto-fill))
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
