@@ -96,6 +96,8 @@
   (global-set-key (kbd "C-M-f") 'iy-go-to-char)
   (global-set-key (kbd "C-M-S-f") 'iy-go-to-char-backward))
 (global-set-key (kbd "C-%")  'goto-match-paren)
+; Change window with Ctrl-TAB
+(global-set-key [\C-tab] 'other-window)
 
 ;; Expansion
 ; Complete lines like VIM
