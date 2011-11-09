@@ -68,6 +68,9 @@
 (dolist (hook '(text-mode-hook))
     (add-hook hook (lambda () (flyspell-mode 1)))
     (add-hook hook 'turn-on-auto-fill))
+; Undo tree
+(ignore-errors
+  (require 'undo-tree))
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
