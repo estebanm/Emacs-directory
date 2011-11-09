@@ -1,6 +1,6 @@
 (defun kill-following-whitespace ()
   (interactive)
-  (if (looking-at "[ \s]")
+  (if (looking-at "[ \t]")
       (progn
         (delete-char 1)
         (kill-following-whitespace))))
