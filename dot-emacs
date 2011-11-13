@@ -5,8 +5,8 @@
 
 ;; Library load paths
 (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
-(add-to-list 'load-path "~/src/Emacs-directory/")
-(add-to-list 'load-path "~/.emacs.d/extra/")
+(add-to-list 'load-path "~/src/Emacs-directory")
+(add-to-list 'load-path "~/src/Emacs-directory/extra")
 (add-to-list 'load-path "~/.emacs.d/rainbow/")
 (add-to-list 'load-path "~/.emacs.d/scala")
 (add-to-list 'load-path "~/lib/scala/ensime_2.8.1-0.4.4/elisp/")
@@ -61,16 +61,14 @@
   (require 'rainbow-mode)
   (rainbow-mode))
 ; Volatile highlights
-(ignore-errors
-  (require 'volatile-highlights)
-  (volatile-highlights-mode t))
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
 ; Flyspell
 (dolist (hook '(text-mode-hook))
     (add-hook hook (lambda () (flyspell-mode 1)))
     (add-hook hook 'turn-on-auto-fill))
 ; Undo tree
-(ignore-errors
-  (require 'undo-tree))
+(require 'undo-tree)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
@@ -94,17 +92,15 @@
 ; Search for the word under the cursor (like * in VIM)
 (global-set-key [?\C-8]  'isearch-forward-at-point)
 ; Use iy-go-to-char to gain some VIM POWA
-(ignore-errors
-  (require 'iy-go-to-char)
-  (global-set-key (kbd "C-M-f") 'iy-go-to-char)
-  (global-set-key (kbd "C-M-S-f") 'iy-go-to-char-backward))
+(require 'iy-go-to-char)
+(global-set-key (kbd "C-M-f") 'iy-go-to-char)
+(global-set-key (kbd "C-M-S-f") 'iy-go-to-char-backward)
 (global-set-key (kbd "C-%")  'goto-match-paren)
 ; Key chords
-(ignore-errors
-  (require 'key-chord)
-  (key-chord-mode 1)
-  (key-chord-define-global "qq" 'iy-go-to-char)
-  (key-chord-define-global "QQ" 'iy-go-to-char-backward))
+(require 'key-chord)
+(key-chord-mode 1)
+(key-chord-define-global "qq" 'iy-go-to-char)
+(key-chord-define-global "QQ" 'iy-go-to-char-backward)
 ; Change window with Ctrl-TAB
 (global-set-key [\C-tab] 'other-window)
 
