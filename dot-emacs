@@ -12,8 +12,11 @@
 (add-to-list 'load-path "~/lib/scala/ensime_2.8.1-0.4.4/elisp/")
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (add-to-list 'load-path "~/.emacs.d/less-css-mode")
+(add-to-list 'load-path "~/src/emacs/asciidoc")
 ; Load own functions, bound to shortcuts below
 (load-library "editing-functions")
+(ignore-errors
+  (require 'asciidoc-mode))
 
 
 ;; Font and color theme
@@ -122,6 +125,10 @@
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
    (cons '("\\.\\(text\\|markdown\\)" . markdown-mode) auto-mode-alist))
+
+;; AsciiDoc mode
+(setq auto-mode-alist
+   (cons '("\\.\\(asciidoc\\|txt\\)" . asciidoc-mode) auto-mode-alist))
 
 ;; nXML configuration
 (require `nxml-mode)
