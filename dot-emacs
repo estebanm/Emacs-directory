@@ -63,10 +63,6 @@
 ; Volatile highlights
 (require 'volatile-highlights)
 (volatile-highlights-mode t)
-; Flyspell
-(dolist (hook '(text-mode-hook))
-    (add-hook hook (lambda () (flyspell-mode 1)))
-    (add-hook hook 'turn-on-auto-fill))
 ; Undo tree
 (require 'undo-tree)
 
