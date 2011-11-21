@@ -78,13 +78,8 @@
 (global-set-key "\C-xj" '(lambda () (interactive) (join-line -1)))
 (global-set-key "\C-x\C-j" '(lambda () (interactive) (join-line -1)))
 (global-set-key "\C-\M-t" 'transpose-lines)
-; Add C-u as in bash
-(global-set-key "\C-u" 'kill-until-start-of-line)
 ; Add C-c c t
 (global-set-key "\C-cct" 'clone-current-test)
-; Add C-M-d, w to removing the whitespace following the cursor
-(global-unset-key "\C-\M-d")
-(global-set-key "\C-\M-dw" 'kill-following-whitespace)
 ; From Steve Yegge: make it super-comfortable to call M-x
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
@@ -100,6 +95,9 @@
 (key-chord-mode 1)
 (key-chord-define-global "qq" 'iy-go-to-char)
 (key-chord-define-global "QQ" 'iy-go-to-char-backward)
+(key-chord-define-global "dw" 'kill-following-whitespace)
+; d0 chord as C-u in bash (mimicking VIM keystrokes)
+(key-chord-define-global "d0" 'kill-until-start-of-line)
 ; Change window with Ctrl-TAB
 (global-set-key [\C-tab] 'other-window)
 
