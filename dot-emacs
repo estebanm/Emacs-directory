@@ -28,9 +28,10 @@
      (color-theme-hober)))
 ; If exists, load this one instead
 (ignore-errors
-  (require 'color-theme-solarized)
-  ;(color-theme-solarized-dark)
-  )
+  ; Add the load path here because it contains a (broken?) copy of color-theme
+  (add-to-list 'load-path "~/.emacs.d/zenburn-emacs")
+  (require 'color-theme-zenburn)
+  (color-theme-zenburn))
 
 ;; Indentation, whitespace...
 (setq c-basic-offset 4)
