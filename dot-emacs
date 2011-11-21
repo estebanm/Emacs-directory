@@ -12,6 +12,7 @@
 (add-to-list 'load-path "~/lib/scala/ensime_2.8.1-0.4.4/elisp/")
 (add-to-list 'load-path "~/.emacs.d/js2-mode")
 (add-to-list 'load-path "~/.emacs.d/less-css-mode")
+(add-to-list 'load-path "~/.emacs.d/ace-jump-mode")
 (add-to-list 'load-path "~/src/emacs/asciidoc")
 ; Load own functions, bound to shortcuts below
 (load-library "editing-functions")
@@ -69,6 +70,9 @@
 (volatile-highlights-mode t)
 ; Undo tree
 (require 'undo-tree)
+; Ace jump
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
