@@ -29,8 +29,10 @@
         (isearch-forward regexp-p no-recursive-edit)))))
 
 (defun goto-match-paren (arg)
-  "Go to the matching parenthesis if on parenthesis, otherwise insert %.
-vi style of % jumping to matching brace."
+  "Go to the matching parenthesis if on parenthesis, otherwise go
+   back one character (when you're at the end of a line ending in
+   a closed paren, it's annoying having to go one character
+   backwards just so that this works)."
   (interactive "p")
   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
