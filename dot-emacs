@@ -51,8 +51,13 @@
 ; http://www.emacswiki.org/emacs-en/InteractivelyDoThings
 (require 'ido)
 (ido-mode t)
+(setq ido-enable-flex-matching t)
+(setq-default ido-use-filename-at-point 'guess)
 ; Don't make me type the whole word 'yes' or 'no'
 (defalias 'yes-or-no-p 'y-or-n-p)
+; automatically revert files that changed on disk when the open buffer
+; has no unsaved changes
+(global-auto-revert-mode 1)
 ; Automatic crap handling
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
@@ -83,6 +88,10 @@
 (global-set-key "\C-xj" '(lambda () (interactive) (join-line -1)))
 (global-set-key "\C-x\C-j" '(lambda () (interactive) (join-line -1)))
 (global-set-key "\C-\M-t" 'transpose-lines)
+(global-set-key (kbd "C-;") 'comment-or-uncomment-region)
+; I hate minimize
+(global-set-key "\C-z" 'ignore)
+(global-set-key "\C-x\C-z" 'ignore)
 ; Add C-c c t
 (global-set-key "\C-cct" 'clone-current-test)
 ; From Steve Yegge: make it super-comfortable to call M-x
