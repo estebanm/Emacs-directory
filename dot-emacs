@@ -62,6 +62,11 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file 'noerror)
 (setq make-backup-files nil)
+; smex (better M-x behaviour)
+(require 'smex)
+(smex-initialize)
+(global-set-key "\C-x\C-m" 'smex)
+(global-set-key "\C-c\C-m" 'smex)
 
 ;; Minor modes
 ; Show-paren mode
@@ -94,9 +99,9 @@
 (global-set-key "\C-x\C-z" 'ignore)
 ; Add C-c c t
 (global-set-key "\C-cct" 'clone-current-test)
-; From Steve Yegge: make it super-comfortable to call M-x
-(global-set-key "\C-x\C-m" 'execute-extended-command)
-(global-set-key "\C-c\C-m" 'execute-extended-command)
+; From Steve Yegge: make it super-comfortable to call M-x (see smex above)
+; (global-set-key "\C-x\C-m" 'execute-extended-command)
+; (global-set-key "\C-c\C-m" 'execute-extended-command)
 ; Search for the word under the cursor (like * in VIM)
 (global-set-key [?\C-8]  'isearch-forward-at-point)
 ; Use iy-go-to-char to gain some VIM POWA
