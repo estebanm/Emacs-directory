@@ -1,0 +1,12 @@
+[submodule "contrib/zenburn-emacs"]
+	path = contrib/zenburn-emacs
+	url = https://github.com/bbatsov/zenburn-emacs.git
+[submodule "contrib/ace-jump-mode"]
+	path = contrib/ace-jump-mode
+	url = https://github.com/winterTTr/ace-jump-mode.git
+[submodule "contrib/js2-mode"]
+	path = contrib/js2-mode
+	url = git://github.com/mooz/js2-mode.git
+[submodule "contrib/rainbow"]
+	path = contrib/rainbow
+	url = https://github.com/emacsmirror/rainbow-mode.git
