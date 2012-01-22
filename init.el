@@ -39,6 +39,13 @@
 ; Ace jump
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+; Disable flyspell, not cool
+(flyspell-mode -1)
+; Autocomplete (see http://cx4a.org/software/auto-complete/manual.html)
+(add-to-list 'load-path "~/src/Emacs-directory/extra/auto-complete/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/src/Emacs-directory/extra/auto-complete/ac-dict")
+(ac-config-default)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
