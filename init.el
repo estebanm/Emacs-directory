@@ -38,7 +38,7 @@
 (volatile-highlights-mode t)
 ; Ace jump
 (require 'ace-jump-mode)
-(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+(define-key global-map (kbd "C-c C-SPC") 'ace-jump-mode)
 ; Disable flyspell, not cool
 (flyspell-mode -1)
 ; Autocomplete (see http://cx4a.org/software/auto-complete/manual.html)
