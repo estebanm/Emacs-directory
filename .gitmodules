@@ -13,3 +13,6 @@
 [submodule "contrib/pomodoro"]
 	path = contrib/pomodoro
 	url = https://github.com/docgnome/pomodoro.el.git
+[submodule "contrib/expand-region"]
+	path = contrib/expand-region
+	url = https://github.com/magnars/expand-region.el.git

@@ -48,6 +48,10 @@
 (ac-config-default)
 ; Pomodoro (M-x pomodoro-start)
 (require 'pomodoro)
+; Expand region
+(require 'expand-region)
+(global-set-key (kbd "C-@") 'er/expand-region)
+(pending-delete-mode t)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
