@@ -10,3 +10,6 @@
 [submodule "contrib/rainbow"]
 	path = contrib/rainbow
 	url = https://github.com/emacsmirror/rainbow-mode.git
+[submodule "contrib/pomodoro"]
+	path = contrib/pomodoro
+	url = https://github.com/docgnome/pomodoro.el.git

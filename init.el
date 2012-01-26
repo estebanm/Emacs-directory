@@ -46,6 +46,8 @@
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/src/Emacs-directory/extra/auto-complete/ac-dict")
 (ac-config-default)
+; Pomodoro (M-x pomodoro-start)
+(require 'pomodoro)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
