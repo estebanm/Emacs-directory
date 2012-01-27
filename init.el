@@ -74,8 +74,8 @@
 ; Key chords
 (key-chord-mode 1)
 ; Use iy-go-to-char to gain some VIM POWA
-(key-chord-define-global "qq" 'iy-go-to-char)
-(key-chord-define-global "QQ" 'iy-go-to-char-backward)
+(key-chord-define-global "qw" 'iy-go-to-char)
+(key-chord-define-global "QW" 'iy-go-to-char-backward)
 (key-chord-define-global "dw" 'kill-following-whitespace)
 ; d0 chord as C-u in bash (mimicking VIM keystrokes)
 (key-chord-define-global "d0" 'kill-until-start-of-line)
