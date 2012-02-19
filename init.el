@@ -52,6 +52,8 @@
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 (pending-delete-mode t)
+; Make scripts executable on save
+(add-hook 'after-save-hook 'hlu-make-script-executable)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
