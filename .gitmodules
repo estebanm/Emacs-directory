@@ -16,3 +16,6 @@
 [submodule "contrib/expand-region"]
 	path = contrib/expand-region
 	url = https://github.com/magnars/expand-region.el.git
+[submodule "contrib/js3-mode"]
+	path = contrib/js3-mode
+	url = https://github.com/thomblake/js3-mode.git
