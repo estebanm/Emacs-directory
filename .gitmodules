@@ -16,3 +16,6 @@
 [submodule "contrib/expand-region"]
 	path = contrib/expand-region
 	url = https://github.com/magnars/expand-region.el.git
+[submodule "contrib/buster-mode"]
+	path = contrib/buster-mode
+	url = git://gitorious.org/buster/buster-mode.git

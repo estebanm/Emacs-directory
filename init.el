@@ -52,6 +52,8 @@
 (require 'expand-region)
 (global-set-key (kbd "C-@") 'er/expand-region)
 (pending-delete-mode t)
+; Buster mode
+(require 'buster-mode)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
