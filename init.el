@@ -54,6 +54,8 @@
 (pending-delete-mode t)
 ; Buster mode
 (require 'buster-mode)
+; Make scripts executable on save
+(add-hook 'after-save-hook 'hlu-make-script-executable)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
@@ -122,8 +124,8 @@
 (setq nxml-slash-auto-complete-flag t)
 
 ;; Javascript
-(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(setq js2-consistent-level-indent-inner-bracket-p t)
-(setq js2-pretty-multiline-decl-indentation-p t)
-(put 'narrow-to-region 'disabled nil)
+; For some reason this line above won't work, maybe it tries to load
+; the .el instead of .elc file???
+; (autoload 'js3-mode "js3-mode" nil t)
+(load-file "~/src/Emacs-directory/contrib/js3-mode/js3.elc")
+(add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))

@@ -19,3 +19,6 @@
 [submodule "contrib/buster-mode"]
 	path = contrib/buster-mode
 	url = git://gitorious.org/buster/buster-mode.git
+[submodule "contrib/js3-mode"]
+	path = contrib/js3-mode
+	url = https://github.com/thomblake/js3-mode.git
