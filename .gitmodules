@@ -22,3 +22,6 @@
 [submodule "contrib/js3-mode"]
 	path = contrib/js3-mode
 	url = https://github.com/thomblake/js3-mode.git
+[submodule "contrib/mark-multiple"]
+	path = contrib/mark-multiple
+	url = https://github.com/magnars/mark-multiple.el.git
