@@ -138,3 +138,5 @@
 ; (autoload 'js3-mode "js3-mode" nil t)
 (load-file "~/src/Emacs-directory/contrib/js3-mode/js3.elc")
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+; Javascript refactoring (have to be loaded here, after loading js3-mode)
+(require 'js2-refactor)

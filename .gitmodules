@@ -25,3 +25,6 @@
 [submodule "contrib/mark-multiple"]
 	path = contrib/mark-multiple
 	url = https://github.com/magnars/mark-multiple.el.git
+[submodule "contrib/js2-refactor"]
+	path = contrib/js2-refactor
+	url = https://emanchado@github.com/emanchado/js2-refactor.el.git
