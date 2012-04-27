@@ -140,3 +140,6 @@
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
 ; Javascript refactoring (have to be loaded here, after loading js3-mode)
 (require 'js2-refactor)
+; jshint
+(require 'flymake-node-jshint)
+(add-hook 'js-mode-hook (lambda () (flymake-mode 1)))
