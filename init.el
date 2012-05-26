@@ -133,11 +133,7 @@
 (setq nxml-slash-auto-complete-flag t)
 
 ;; Javascript
-; For some reason this line above won't work, maybe it tries to load
-; the .el instead of .elc file???
-; (autoload 'js3-mode "js3-mode" nil t)
-(load-file "~/src/Emacs-directory/contrib/js3-mode/js3.elc")
-(add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 ; Javascript refactoring (have to be loaded here, after loading js3-mode)
 (require 'js2-refactor)
 ; jshint

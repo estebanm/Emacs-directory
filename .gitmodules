@@ -27,7 +27,7 @@
 	url = https://github.com/magnars/mark-multiple.el.git
 [submodule "contrib/js2-refactor"]
 	path = contrib/js2-refactor
-	url = https://emanchado@github.com/emanchado/js2-refactor.el.git
+	url = https://github.com/magnars/js2-refactor.el.git
 [submodule "contrib/flymake-node-jshint"]
 	path = contrib/flymake-node-jshint
 	url = https://github.com/jegbjerg/flymake-node-jshint.git
