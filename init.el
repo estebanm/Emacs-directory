@@ -127,15 +127,15 @@
 (setq auto-mode-alist
       (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
             auto-mode-alist))
-(add-hook 'nxml-mode-hook '(lambda nil
+(add-hook 'nxml-mode-hook '(lambda ()
                              (local-set-key [M-end] 'nxml-finish-element)))
 ; Autoclose tag on </
 (setq nxml-slash-auto-complete-flag t)
 
 ;; Javascript
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-; Javascript refactoring (have to be loaded here, after loading js3-mode)
+; Javascript refactoring (have to be loaded here, after loading js2-mode)
 (require 'js2-refactor)
 ; jshint
 (require 'flymake-node-jshint)
-(add-hook 'js-mode-hook (lambda () (flymake-mode 1)))
+(add-hook 'js2-mode-hook (lambda () (flymake-mode t)))
