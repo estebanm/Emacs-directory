@@ -56,7 +56,7 @@
 (require 'buster-mode)
 ; Make scripts executable on save
 (add-hook 'after-save-hook 'hlu-make-script-executable)
-;; mark-multiple
+; mark-multiple
 (require 'inline-string-rectangle)
 (global-set-key (kbd "C-x r t") 'inline-string-rectangle)
 (require 'mark-more-like-this)
