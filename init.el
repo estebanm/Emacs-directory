@@ -64,7 +64,9 @@
 (global-set-key (kbd "C->") 'mark-next-like-this)
 (global-set-key (kbd "C-M-m") 'mark-more-like-this)
 (global-set-key (kbd "C-M-*") 'mark-all-like-this)
-
+; projectile
+(require 'projectile)
+(projectile-global-mode)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)

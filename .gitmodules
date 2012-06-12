@@ -31,3 +31,6 @@
 [submodule "contrib/flymake-node-jshint"]
 	path = contrib/flymake-node-jshint
 	url = https://github.com/jegbjerg/flymake-node-jshint.git
+[submodule "contrib/projectile"]
+	path = contrib/projectile
+	url = https://github.com/bbatsov/projectile.git
