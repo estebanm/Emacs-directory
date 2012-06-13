@@ -42,10 +42,10 @@
 ; Disable flyspell, not cool
 (flyspell-mode -1)
 ; Autocomplete (see http://cx4a.org/software/auto-complete/manual.html)
-(add-to-list 'load-path "~/src/Emacs-directory/extra/auto-complete/")
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/src/Emacs-directory/extra/auto-complete/ac-dict")
-(ac-config-default)
+;;; (add-to-list 'load-path "~/src/Emacs-directory/extra/auto-complete/")
+;;; (require 'auto-complete-config)
+;;; (add-to-list 'ac-dictionary-directories "~/src/Emacs-directory/extra/auto-complete/ac-dict")
+;;; (ac-config-default)
 ; Pomodoro (M-x pomodoro-start)
 (require 'pomodoro)
 ; Expand region
