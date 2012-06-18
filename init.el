@@ -14,7 +14,6 @@
 ; Load own functions, bound to shortcuts below
 (load-library "editing-functions")
 ; AsciiDoc major mode
-(add-to-list 'load-path "~/src/emacs/asciidoc")
 (require 'asciidoc-mode)
 
 ;; Font and color theme

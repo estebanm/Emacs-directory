@@ -34,3 +34,6 @@
 [submodule "contrib/projectile"]
 	path = contrib/projectile
 	url = https://github.com/bbatsov/projectile.git
+[submodule "contrib/asciidoc-mode"]
+	path = contrib/asciidoc-mode
+	url = https://github.com/emanchado/asciidoc-mode.git
