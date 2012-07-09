@@ -67,6 +67,8 @@
 ; projectile
 (require 'projectile)
 (projectile-global-mode)
+(setq projectile-ignored-directories '("static/build" "static/deps" "tmp"))
+(setq projectile-ignored-files '("robohydra.log"))
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
