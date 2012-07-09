@@ -66,7 +66,7 @@
 ; projectile
 (require 'projectile)
 (projectile-global-mode)
-(setq projectile-ignored-directories '("static/build" "static/deps" "tmp"))
+(setq projectile-ignored-directories '("build" "deps" "tmp" "node_modules" "mobile" "docs"))
 (setq projectile-ignored-files '("robohydra.log"))
 
 ;; Common shortcuts
