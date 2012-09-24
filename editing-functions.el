@@ -49,3 +49,18 @@
         (set-file-modes buffer-file-name
                         (logior (file-modes buffer-file-name) #o100))
         (message (concat "Made " buffer-file-name " executable"))))))
+
+(defun comment-and-duplicate-line ()
+  "Copy current line to line below and comment current line."
+  (interactive)
+  (let* ((beg (line-beginning-position))
+         (end (line-end-position))
+         (line (buffer-substring-no-properties beg end))
+         (column (current-column)))
+      (comment-region beg end)
+      (goto-char (line-end-position))
+      (newline)
+      (insert line)
+      (move-to-column column)))
+
+(global-set-key (kbd "C-c C-d") 'comment-and-duplicate-line)
