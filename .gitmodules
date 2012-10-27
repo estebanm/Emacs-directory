@@ -37,3 +37,6 @@
 [submodule "contrib/asciidoc-mode"]
 	path = contrib/asciidoc-mode
 	url = https://github.com/emanchado/asciidoc-mode.git
+[submodule "contrib/dash.el"]
+	path = contrib/dash.el
+	url = https://github.com/magnars/dash.el.git
