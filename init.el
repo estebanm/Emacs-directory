@@ -68,6 +68,8 @@
 (projectile-global-mode)
 (setq projectile-ignored-directories '("build" "deps" "tmp" "node_modules" "mobile" "docs"))
 (setq projectile-ignored-files '("*.log" "*.json"))
+; Mouse sucks, load minibuffer-errors
+(load-library "flymake-cursor")
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
@@ -142,3 +144,20 @@
 ; jshint
 (require 'flymake-node-jshint)
 (add-hook 'js2-mode-hook (lambda () (flymake-mode t)))
+
+
+;; Python
+(require 'pymacs)
+(pymacs-load "ropemacs" "rope-")
+; Pyflakes ON, baby
+(when (load "flymake" t)
+  (defun flymake-pyflakes-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "flake8" (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pyflakes-init)))
+(add-hook 'find-file-hook 'flymake-find-file-hook)
