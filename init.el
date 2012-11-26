@@ -67,7 +67,7 @@
 (require 'projectile)
 (projectile-global-mode)
 (setq projectile-ignored-directories '("build" "deps" "tmp" "node_modules" "mobile" "docs"))
-(setq projectile-ignored-files '("robohydra.log"))
+(setq projectile-ignored-files '("*.log" "*.json"))
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)
