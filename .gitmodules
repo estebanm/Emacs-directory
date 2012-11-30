@@ -40,3 +40,6 @@
 [submodule "contrib/dash.el"]
 	path = contrib/dash.el
 	url = https://github.com/magnars/dash.el.git
+[submodule "contrib/clojure-mode"]
+	path = contrib/clojure-mode
+	url = https://github.com/technomancy/clojure-mode.git
