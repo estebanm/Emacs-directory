@@ -43,3 +43,6 @@
 [submodule "contrib/clojure-mode"]
 	path = contrib/clojure-mode
 	url = https://github.com/technomancy/clojure-mode.git
+[submodule "contrib/nrepl.el"]
+	path = contrib/nrepl.el
+	url = https://github.com/kingtim/nrepl.el.git

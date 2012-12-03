@@ -164,3 +164,4 @@
 
 ; Clojure
 (require 'clojure-mode)
+(require 'clojure-test-mode)
