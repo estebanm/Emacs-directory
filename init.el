@@ -165,3 +165,7 @@
 ; Clojure
 (require 'clojure-mode)
 (require 'clojure-test-mode)
+
+;; Magit
+(require 'magit)
+(load-library "magit-config")
