@@ -99,6 +99,12 @@
 (key-chord-define-global "d0" 'kill-until-start-of-line)
 ; Change window with Ctrl-TAB
 (global-set-key [\C-tab] 'other-window)
+; Comment and duplicate line
+(global-set-key (kbd "C-c C-d") 'comment-and-duplicate-line)
+; Open lines below and above
+; (see http://whattheemacsd.com//editing-defuns.el-01.html)
+(global-set-key (kbd "<C-return>") 'open-line-below)
+(global-set-key (kbd "<C-S-return>") 'open-line-above)
 
 ;; Expansion
 ; Complete lines like VIM
@@ -162,7 +168,7 @@
                '("\\.py\\'" flymake-pyflakes-init)))
 (add-hook 'find-file-hook 'flymake-find-file-hook)
 
-; Clojure
+;; Clojure
 (require 'clojure-mode)
 (require 'clojure-test-mode)
 
