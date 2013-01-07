@@ -67,7 +67,7 @@
 (require 'projectile)
 (projectile-global-mode)
 (setq projectile-ignored-directories '("build" "deps" "tmp" "node_modules" "mobile" "docs"))
-(setq projectile-ignored-files '("*.log" "*.json"))
+(setq projectile-ignored-files '("*.log" "*.json" "*.pyc"))
 ; Mouse sucks, load minibuffer-errors
 (load-library "flymake-cursor")
 
