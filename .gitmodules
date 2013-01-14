@@ -46,3 +46,15 @@
 [submodule "contrib/nrepl.el"]
 	path = contrib/nrepl.el
 	url = https://github.com/kingtim/nrepl.el.git
+[submodule "contrib/emacs-epc"]
+	path = contrib/emacs-epc
+	url = https://github.com/kiwanami/emacs-epc.git
+[submodule "contrib/emacs-deferred"]
+	path = contrib/emacs-deferred
+	url = https://github.com/kiwanami/emacs-deferred.git
+[submodule "contrib/emacs-jedi"]
+	path = contrib/emacs-jedi
+	url = https://github.com/tkf/emacs-jedi.git
+[submodule "contrib/emacs-ctable"]
+	path = contrib/emacs-ctable
+	url = https://github.com/kiwanami/emacs-ctable

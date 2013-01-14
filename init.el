@@ -153,8 +153,13 @@
 
 
 ;; Python
-(require 'pymacs)
-(pymacs-load "ropemacs" "rope-")
+;; (require 'pymacs)
+;; (pymacs-load "ropemacs" "rope-")
+; Jedi
+(auto-complete-mode)
+(autoload 'jedi:setup "jedi" nil t)
+(setq jedi:setup-keys t)
+(add-hook 'python-mode-hook 'jedi:setup)
 ; Pyflakes ON, baby
 (when (load "flymake" t)
   (defun flymake-pyflakes-init ()
