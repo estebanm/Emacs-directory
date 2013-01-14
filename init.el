@@ -97,8 +97,6 @@
 (key-chord-define-global "dw" 'kill-following-whitespace)
 ; d0 chord as C-u in bash (mimicking VIM keystrokes)
 (key-chord-define-global "d0" 'kill-until-start-of-line)
-; Change window with Ctrl-TAB
-(global-set-key [\C-tab] 'other-window)
 ; Comment and duplicate line
 (global-set-key (kbd "C-c C-d") 'comment-and-duplicate-line)
 ; Open lines below and above
