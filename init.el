@@ -153,8 +153,12 @@
 ;; Python
 ;; (require 'pymacs)
 ;; (pymacs-load "ropemacs" "rope-")
+; Auto-complete mode (for Jedi below)
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "/usr/share/auto-complete/dict/")
+(require 'auto-complete-config)
+(ac-config-default)
 ; Jedi
-(auto-complete-mode)
 (autoload 'jedi:setup "jedi" nil t)
 (setq jedi:setup-keys t)
 (add-hook 'python-mode-hook 'jedi:setup)
