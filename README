@@ -5,12 +5,10 @@ Debian packages:
 
 * fonts-inconsolata
 * yasnippet
-* auto-complete-el
 
 Python packages:
 
-* jedi
-* epc
+* flake8
 
 Node packages:
 
