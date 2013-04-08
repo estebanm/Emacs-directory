@@ -5,9 +5,6 @@
         (delete-char 1)
         (kill-following-whitespace))))
 
-(fset 'kill-until-start-of-line
-   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ("\260" 0 "%d")) arg)))
-
 (fset 'clone-current-test
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([24 13 115 101 97 114 99 104 45 98 97 99 107 tab 45 tab return 94 32 32 125 44 return 67108896 14 24 13 115 101 97 114 99 104 45 102 111 114 tab 45 tab return 94 32 32 125 return 1 24 11 25 25] 0 "%d")) arg)))
 
