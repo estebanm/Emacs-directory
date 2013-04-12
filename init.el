@@ -103,6 +103,9 @@
 ; (see http://whattheemacsd.com//editing-defuns.el-01.html)
 (global-set-key (kbd "<C-return>") 'open-line-below)
 (global-set-key (kbd "<C-S-return>") 'open-line-above)
+; Go to next error in flymake modes
+(global-set-key (kbd "<C-M-down>") 'flymake-goto-next-error)
+(global-set-key (kbd "<C-M-up>") 'flymake-goto-prev-error)
 
 ;; Expansion
 ; Complete lines like VIM
