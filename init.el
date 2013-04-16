@@ -120,6 +120,8 @@
 ;; yasnippet
 (setq yas/root-directory "~/src/Emacs-directory/snippets")
 (yas/load-directory yas/root-directory)
+; This contains functions needed by the snippets
+(require 's)
 
 
 ;;; Major mode shenanigans ---------------------------------------------

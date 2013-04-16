@@ -58,3 +58,6 @@
 [submodule "contrib/emacs-ctable"]
 	path = contrib/emacs-ctable
 	url = https://github.com/kiwanami/emacs-ctable
+[submodule "contrib/s.el"]
+	path = contrib/s.el
+	url = https://github.com/magnars/s.el.git
