@@ -70,6 +70,7 @@
 (setq projectile-ignored-files '("*.log" "*.json" "*.pyc"))
 ; Mouse sucks, load minibuffer-errors
 (load-library "flymake-cursor")
+(require 'ido-vertical-mode)
 
 ;; Common shortcuts
 (global-set-key "\C-ch" help-map)

@@ -61,3 +61,6 @@
 [submodule "contrib/s.el"]
 	path = contrib/s.el
 	url = https://github.com/magnars/s.el.git
+[submodule "contrib/ido-vertical-mode"]
+	path = contrib/ido-vertical-mode
+	url = https://github.com/rson/ido-vertical-mode.el.git
